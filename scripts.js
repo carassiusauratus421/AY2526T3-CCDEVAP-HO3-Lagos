@@ -49,6 +49,7 @@ function checkAnswer() {
 
         document.getElementById("score").innerHTML = score;
 
+        // placeholder stuff
         if (score == 5) {
             updateMessage("YOU WIN!", "green");
         }
