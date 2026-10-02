@@ -1,193 +1,41 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Home Page</title>
-        <link rel="stylesheet" href="styles/styles.css">
-    </head>
-    <body>
-        <a id="top"></a>
-        <!-- NAV BAR -->
-        <div class="nav-bar">
-            <div class="nav-left">
-                <form action="index.html">
-                    <button class="selected" type="submit">HOME</button>
-                </form>
-                -
-                <form action="projects.html">
-                    <button type="submit">PROJECTS</button>
-                </form>
-            </div>
+<html lang="en">
+	
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Math Challenge</title>
+	<link rel="stylesheet" href="style.css">
+</head>
 
-            <div class="nav-right">
-                <form action="#top">
-                    <button class="page-nav" type="submit"><b>&uarr;</b></button>
-                </form>
-                -
-                <form action="#aboutme">
-                    <button class="page-nav" type="submit">ABOUT ME</button>
-                </form>
-                -
-                <form action="#interests">
-                    <button class="page-nav" type="submit">INTERESTS</button>
-                </form>
-                -
-                <form action="#dog">
-                    <button class="page-nav" type="submit">DOG</button>
-                </form>
-                -
-                <form action="#bottom">
-                    <button class="page-nav" type="submit"><b>&darr;</b></button>
-                </form>
-            </div>
-        </div>
-        <!-- NAV BAR END -->
+<body>
+  <div class="div-game">
+    <h1>Math Challenge</h1>
+	
+	<div id="div-questions">
+		<h4>Get 5 correct answers to win!</h4>
+		<div id="question" class="question">
+			1 + 1
+		</div>
 
-        <a id="aboutme"></a>
-        <div class="content">
-            <div class="information-card">
-                <div class="profile-info">
-                    <h3>ID120 - Bachelor of Science in Information Technology</h3>
-                    <div class="textblock">
-                        <h1>AUSTIN B. LAGOS</h1>
-                        March 08, 2000<br/>
-                        Age: 26
-                    </div>
+		<input id="answer" type="number" placeholder="Enter answer" />
 
-                    <p>
-                        I am currently an undergraduate BSIT student from DLSU<br/>
-                        looking to gain experience and improve my skills in the<br/>
-                        field of information technology. 
-                    </p>
-                </div>
+		<br>
 
-                <div class="profile-picture">
-                    <img src="https://dlsu.instructure.com/images/thumbnails/18946808/vdfXeKOmpEzK7lhWnkS1tsMAg30iiAbY5ODBqwZP" width="260">
-                </div>
-            </div>
+		<button id="answerButton" onclick="checkAnswer();">Submit</button>
 
-            <a id="interests"></a>
-            <div class="header-bar">
-                <h3>INTERESTS</h3>
+		<div class="score">
+			Score: <span id="score">0</span> / 5
+		</div>
 
-                <form action="projects.html">
-                    <button class="page-nav" type="submit">// CHECK OUT MY PROJECTS //</button>
-                </form>
-            </div>
+		<div id="message" class="message"></div>
+	</div>
 
-            <ul>
-                <li>Game Development</li>
-                <li>3D Modelling</li>
-                <li>3D Animation</li>
-                <li>Welding</li>
-                <li>Jewelry Making</li>
-                <li>Woodworking</li>
-                <li>Electronics Projects</li>
-                <li>Swimming</li>
-                <li>Sewing</li>
-                <li>Video Games</li>
-                    <div class="games">
-                        <div class="game">
-                            <a href="https://www.minecraft.net/en-us" target="_blank">
-                                <img src="media/aboutme/mc.jpg" height="128">
-                            </a>
-                            <audio class="game-ost" controls>
-                                <source src="media/aboutme/mc_haggstrom.mp3" type="audio/mpeg">
-                            </audio>
-                            Minecraft
-                        </div>
+	<div id="div-success">
+		<h2>Congratulations!<br>You win!!</h2>
+		<button id="playButton" onclick="playAgain();">Play again?</button>
+	</div>
 
-                        <div class="game">
-                            <a href="https://www.roblox.com/home" target="_blank">
-                                <img src="media/aboutme/rbx.jpg" height="128">
-                            </a>
-                            <audio class="game-ost" controls>
-                                <source src="media/aboutme/rbx_oof.mp3" type="audio/mpeg">
-                            </audio>
-                            Roblox
-                        </div>
-
-                        <div class="game">
-                            <a href="https://www.arknights.global/" target="_blank">
-                                <img src="media/aboutme/ak.jpg" height="128">
-                            </a>
-                            <audio class="game-ost" controls>
-                                <source src="media/aboutme/ak_lifeflow.ogg" type="audio/ogg">
-                            </audio>
-                            Arknights
-                        </div>
-
-                        <div class="game">
-                            <a href="https://honkaiimpact3.hoyoverse.com/global/en-us/fab" target="_blank">
-                                <img src="media/aboutme/hi3.jpg" height="128">
-                            </a>
-                            <audio class="game-ost" controls>
-                                <source src="media/aboutme/hi3_gion2.mp3" type="audio/mpeg">
-                            </audio>
-                            Honkai Impact 3rd
-                        </div>
-
-                        <div class="game">
-                            <a href="https://gf.sunborngame.com/" target="_blank">
-                                <img src="media/aboutme/gfl1.jpg" height="128">
-                            </a>
-                            <audio class="game-ost" controls>
-                                <source src="media/aboutme/gfl1_day1.ogg" type="audio/ogg">
-                            </audio>
-                            Girl's Frontline 1
-                        </div>
-
-                        <div class="game">
-                            <a href="https://gf2exilium.sunborngame.com/main" target="_blank">
-                                <img src="media/aboutme/gfl2.jpg" height="128">
-                            </a>
-                            <audio class="game-ost" controls>
-                                <source src="media/aboutme/glf2_sojourn.ogg" type="audio/ogg">
-                            </audio>
-                            Girl's Frontline 2
-                        </div>
-                    </div>
-            </ul>
-            
-            <a id="dog"></a>
-            <div class="header-bar">
-                <h3>MY DOG (LULU)</h3>
-                
-                <audio controls>
-                    <source src="media/aboutme/dog.mp3" type="audio/mpeg">
-                </audio>
-            </div>
-            
-            <div class="carousel">
-                <img src="media/aboutme/dog_01.jpg" height="320">
-                <img src="media/aboutme/dog_02.jpg" height="320">
-                <img src="media/aboutme/dog_03.jpg" height="320">
-                <img src="media/aboutme/dog_04.jpg" height="320">
-                <img src="media/aboutme/dog_05.jpg" height="320">
-            </div>
-        </div>
-        <a id="bottom"></a>
-    </body>
-
-    <footer>
-        <div class="header-bar">
-            <h3>SOCIAL MEDIA</h3>
-            <div class="contact">
-                <a href="https://www.facebook.com/auslag"><img src="media/contact/fb.png" width="24"/></a>
-                <a href="https://www.instagram.com/lagaustin"><img src="media/contact/ig.png" width="24"/></a>
-            </div>
-        </div>
-
-        <div class="header-bar">
-            <h3>ASK ME ANYTHING</h3>
-            <form class="contact">
-                SEND TO MY
-                <select name="email" id="email">
-                    <option value="personal">PERSONAL EMAIL</option>
-                    <option value="personal">SCHOOL EMAIL</option>
-                </select>
-                <input type="text" id="question" name="question">
-                <input type="submit" value="&checkmark;">
-            </form>
-        </div>
-    </footer>
+	<script src="scripts.js"></script>
+</body>
 </html>
