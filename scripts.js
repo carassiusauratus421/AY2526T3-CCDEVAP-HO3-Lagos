@@ -3,41 +3,56 @@ let score = 0;
 
 const operators = ["+", "-", "*"];
 
-function RandomInt(min, max) {
+function randomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function GenerateQuestion() {
-    num1 = RandomInt(0,10);
-    num2 = RandomInt(0,10);
-    operator = operators[RandomInt(0, operators.length-1)];
+function generateQuestion() {
+    num1 = randomInt(0,10);
+    num2 = randomInt(0,10);
+    operator = operators[randomInt(0, operators.length-1)];
 
-    return (num1 +" "+ operator +" "+ num2).toString();
+    let question = (num1 +" "+ operator +" "+ num2).toString();
+
+    document.getElementById("question").innerHTML = question;
 }
 
 function playAgain() {
-    GenerateQuestion();
+    generateQuestion();
     score = 0;
 }
 
+function updateMessage(message, color = "black") {
+    let element = document.getElementById("message");
+    element.style.color = color;
+    element.innerHTML = message;
+}
+
 function checkAnswer() {
-    correctAnswer = eval((num1 + operator + num2).toString());
-    document.getElementById("answer").placeholder = correctAnswer;
+    let currentAnswer = document.getElementById("answer").value;
+    if (currentAnswer) {
+        correctAnswer = eval((num1 + operator + num2).toString());
+        generateQuestion();
 
-    if (document.getElementById("answer").value == correctAnswer) {
-        score++;
-        if (score < 0)
-            score = 0;
-        else if (score > 5)
-            score = 5;
+        if (currentAnswer == correctAnswer) {
+            updateMessage("Correct!", "green");
+            score++;
+            if (score < 0)
+                score = 0;
+            else if (score > 5)
+                score = 5;
+        } else {
+            updateMessage("Wrong! Correct answer was " + correctAnswer, "red");
+        }
+
+        document.getElementById("score").innerHTML = score;
+
+        if (score == 5) {
+            updateMessage("YOU WIN!", "green");
+        }
+    } else {
+        updateMessage("Please type your answer.")
     }
-
-    //prompt to play again on max score
-    if (score == 5){
-        playAgain(); 
-    };
-
-    document.getElementById("score").innerHTML = score;
 }
