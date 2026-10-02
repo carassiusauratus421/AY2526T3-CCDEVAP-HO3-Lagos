@@ -17,11 +17,19 @@ function generateQuestion() {
     let question = (num1 +" "+ operator +" "+ num2).toString();
 
     document.getElementById("question").innerHTML = question;
+    document.getElementById("score").innerHTML = score;
 }
 
-function playAgain() {
-    generateQuestion();
-    score = 0;
+function updateContentVisibility() {
+    if (score >= 5) {
+        // hide question, show win message/replay button
+        document.getElementById("div-questions").style.display = "none";
+        document.getElementById("div-success").style.display = "block";
+    } else {
+        // hide win message/replay button, show question
+        document.getElementById("div-questions").style.display = "block";
+        document.getElementById("div-success").style.display = "none";
+    }
 }
 
 function updateMessage(message, color = "black") {
@@ -30,15 +38,21 @@ function updateMessage(message, color = "black") {
     element.innerHTML = message;
 }
 
+function playAgain() {
+    score = 0;
+    generateQuestion();
+    updateContentVisibility()
+    updateMessage("")
+}
+
 function checkAnswer() {
     let currentAnswer = document.getElementById("answer").value;
     if (currentAnswer) {
         correctAnswer = eval((num1 + operator + num2).toString());
-        generateQuestion();
-
         if (currentAnswer == correctAnswer) {
             updateMessage("Correct!", "green");
             score++;
+            // clamp score within correct values
             if (score < 0)
                 score = 0;
             else if (score > 5)
@@ -47,12 +61,10 @@ function checkAnswer() {
             updateMessage("Wrong! Correct answer was " + correctAnswer, "red");
         }
 
-        document.getElementById("score").innerHTML = score;
-
-        // placeholder stuff
-        if (score == 5) {
-            updateMessage("YOU WIN!", "green");
-        }
+        // update score display, clear answer in text box, update question/win message visibility
+        document.getElementById("answer").value = "";
+        updateContentVisibility()
+        generateQuestion();
     } else {
         updateMessage("Please type your answer.")
     }

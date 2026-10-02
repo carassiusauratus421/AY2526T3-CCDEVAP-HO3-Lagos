@@ -1,2 +1,2 @@
-Hands on activity 2 for CCAPDEV 1261
-September 17, 2026
+Hands on activity 3 for CCAPDEV 1261
+October 02, 2026
