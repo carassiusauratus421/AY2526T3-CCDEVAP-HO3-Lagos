@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<title>Math Challenge</title>
 	<link rel="stylesheet" href="style.css">
+	<script src="scripts.js"></script>
 </head>
 
 <body>
@@ -15,11 +16,13 @@
 	<div id="div-questions">
 		<h4>Get 5 correct answers to win!</h4>
 		<div id="question" class="question">
-			1 + 1
-		</div>
+            <script>
+                document.write(GenerateQuestion())
+            </script>
+        </div>
 
 		<input id="answer" type="number" placeholder="Enter answer" />
-
+        
 		<br>
 
 		<button id="answerButton" onclick="checkAnswer();">Submit</button>
